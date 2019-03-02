@@ -38,6 +38,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationRequest locationRequest;
     private Location lastLocation;
     private Marker currentLocation;
+    private  Marker position1;
+    private  Marker position2;
+    private  Marker position3;
+    private  Marker position4;
+
+
+
+
+
     public static final int PERMISSION_REQUEST_LOCATION_CODE =99;
 
     @Override
@@ -95,6 +104,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
 
             mMap.setMyLocationEnabled( true );
+             position1= mMap.addMarker(new MarkerOptions().position(new LatLng(10.066150, 76.6199765)).title("station 1"));
+         position2=   mMap.addMarker(new MarkerOptions().position(new LatLng(10.065960,76.676653)).title("station 2"));
+          position3=  mMap.addMarker(new MarkerOptions().position(new LatLng(10.060763,76.63443)).title("station 3"));
+          position4 =  mMap.addMarker(new MarkerOptions().position(new LatLng(10.04097,76.622968)).title("station 4").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+
+
         }
 
 
@@ -126,7 +142,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         currentLocation = mMap.addMarker( markerOptions );
         mMap.moveCamera( CameraUpdateFactory.newLatLng( latLng ) );
-        mMap.animateCamera( CameraUpdateFactory.zoomBy( 10 ) );
+        mMap.animateCamera( CameraUpdateFactory.zoomBy( 1 ) );
 
         if (client != null) {
             if (ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
@@ -190,4 +206,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+
 }
